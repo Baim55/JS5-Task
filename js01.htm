@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 15px;
+      }
+      .balans {
+        text-align: center;
+        background: #fff;
+        padding: 30px 40px;
+        border-radius: 16px;
+        width: 320px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      }
+      #blns {
+        font-size: 20px;
+        color: #4f46e5;
+      }
+      input {
+        width: 100%;
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        font-size: 15px;
+      }
+      button {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 8px;
+        font-size: 15px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+      }
+      .btn1 {
+        background: #22c55e;
+        color: white;
+      }
+      .btn2 {
+        background: #ef4444;
+        color: white;
+      }
+      .btn3 {
+        background: #4a44ef;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="balans">
+      <h1>Sadə balans sistemi</h1>
+      <h3 id="blns">Balans: 500 AZN</h3>
+      <div class="btn">
+        <input type="number" placeholder="Məbləğ" id="mbl" />
+        <button onclick="plus()" class="btn1">
+          <i class="fa-solid fa-plus"></i>Pul artır
+        </button>
+        <button onclick="minus()" class="btn2">
+          <i class="fa-solid fa-minus"></i>Pul çıxar
+        </button>
+        <p id="ntc"></p>
+      </div>
+    </div>
+
+    <div class="balans">
+      <h1>Anbar məhsul yoxlama</h1>
+      <div class="btn">
+        <input type="number" id="id" />
+        <button onclick="yoxla()" class="btn3">Yoxla</button>
+        <p id="msj"></p>
+      </div>
+    </div>
+
+    <script>
+      let blns = document.getElementById("blns");
+      let mbl = document.getElementById("mbl");
+      let ntc = document.getElementById("ntc");
+      let balans = 500;
+      function plus() {
+        let mebleg = +mbl.value;
+        if (!mebleg || mebleg <= 0) {
+          ntc.innerHTML = "Düzgün məbləğ daxil edin";
+        } else {
+          balans += mebleg;
+          blns.innerHTML = `Balans: ${balans} AZN`;
+          ntc.innerHTML = "Pul əlavə olundu";
+        }
+      }
+      function minus() {
+        let mebleg = +mbl.value;
+        if (!mebleg || mebleg <= 0) {
+          ntc.innerHTML = "Düzgün məbləğ daxil edin";
+        } else if (mebleg > balans) {
+          ntc.innerHTML = "Kifayət qədər məbləğ yoxdur";
+        } else {
+          balans -= mebleg;
+          blns.innerHTML = `Balans: ${balans} AZN`;
+          ntc.innerHTML = "Pul çıxarıldı";
+        }
+      }
+    </script>
+    <script>
+      let idYoxla = document.getElementById("id");
+      let msj = document.getElementById("msj");
+
+      function yoxla() {
+        let id = +idYoxla.value;
+        if (id == 1) {
+          msj.innerHTML = "Məhsul: Telefon";
+        } else if (id == 2) {
+          msj.innerHTML = "Məhsul: Noutbuk";
+        } else if (id == 3) {
+          msj.innerHTML = "Məhsul: Planşet";
+        } else if (id == 4) {
+          msj.innerHTML = "Məhsul: Qulaqlıq";
+        } else if (id == 5) {
+          msj.innerHTML = "Məhsul: Mouse";
+        } else if (id == 6) {
+          msj.innerHTML = "Məhsul: Klaviatura";
+        } else if (id == 7) {
+          msj.innerHTML = "Məhsul: Monitor";
+        } else if (id == 8) {
+          msj.innerHTML = "Məhsul: Printer";
+        } else if (id == 9) {
+          msj.innerHTML = "Məhsul: Kamera";
+        } else if (id == 10) {
+          msj.innerHTML = "Məhsul: Powerbank";
+        } else {
+          msj.innerHTML = "Belə məhsul yoxdur";
+        }
+      }
+    </script>
+  </body>
+</html>
